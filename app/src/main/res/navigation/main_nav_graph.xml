@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeResolverFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.HomeResolverFragment"
+        android:name="com.kodorebi.exchangerate.ui.HomeResolverFragment"
         android:label="fragment_home_resolver"
         tools:layout="@layout/fragment_home_resolver" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.UsersFragment"
+        android:name="com.kodorebi.exchangerate.ui.UsersFragment"
         android:label="fragment_users"
         tools:layout="@layout/fragment_users" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/userTripsFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.UserTripsFragment"
+        android:name="com.kodorebi.exchangerate.ui.UserTripsFragment"
         android:label="UserTripsFragment"
         tools:layout="@layout/fragment_user_trips">
         <action
@@ -50,12 +50,12 @@
 
     <fragment
         android:id="@+id/tripEditorFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.TripEditorFragment"
+        android:name="com.kodorebi.exchangerate.ui.TripEditorFragment"
         android:label="fragment_trip_editor"
         tools:layout="@layout/fragment_trip_editor" />
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.UserProfileFragment"
+        android:name="com.kodorebi.exchangerate.ui.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" >
         <action
@@ -71,12 +71,12 @@
     </fragment>
     <fragment
         android:id="@+id/printTripsFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.PrintTripsFragment"
+        android:name="com.kodorebi.exchangerate.ui.PrintTripsFragment"
         android:label="PrintTripsFragment"
         tools:layout="@layout/fragment_print_trips"/>
     <fragment
         android:id="@+id/userEditorFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.UserEditorFragment"
+        android:name="com.kodorebi.exchangerate.ui.UserEditorFragment"
         android:label="fragment_user_editor"
         tools:layout="@layout/fragment_user_editor" />
 </navigation>

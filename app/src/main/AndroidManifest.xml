@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kodorebi.kotlinstarter">
+    package="com.kodorebi.exchangerate">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.kodorebi.kotlinstarter.app.App"
+        android:name="com.kodorebi.exchangerate.app.App"
         android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.kodorebi.kotlinstarter.MainActivity"
+            android:name="com.kodorebi.exchangerate.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             >
             <intent-filter>

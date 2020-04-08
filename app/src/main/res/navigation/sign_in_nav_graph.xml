@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.SignInFragment"
+        android:name="com.kodorebi.exchangerate.ui.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action

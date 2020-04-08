@@ -26,9 +26,39 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "4:5243149722789487294",
+      "lastPropertyId": "4:1350526626709732105",
+      "name": "DbRate",
+      "properties": [
+        {
+          "id": "1:5446173099856554262",
+          "name": "localId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2955941406594161370",
+          "name": "currency",
+          "type": 9
+        },
+        {
+          "id": "3:6504453988942172713",
+          "name": "value",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "4:1350526626709732105",
+          "name": "date",
+          "type": 10
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "3:7495634758563887834",
+  "lastEntityId": "4:5243149722789487294",
   "lastIndexId": "2:6997592873665135063",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",

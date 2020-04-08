@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/initialFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.InitialFragment"
+        android:name="com.kodorebi.exchangerate.ui.InitialFragment"
         android:label="fragment_initial"
         tools:layout="@layout/fragment_initial" >
         <action

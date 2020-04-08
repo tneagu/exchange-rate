@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.WelcomeFragment"
+        android:name="com.kodorebi.exchangerate.ui.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action

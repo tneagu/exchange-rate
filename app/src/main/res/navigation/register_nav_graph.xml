@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.RegisterFragment"
+        android:name="com.kodorebi.exchangerate.ui.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/confirmEmailFragment"
-        android:name="com.kodorebi.kotlinstarter.ui.ConfirmEmailFragment"
+        android:name="com.kodorebi.exchangerate.ui.ConfirmEmailFragment"
         android:label="fragment_confirm_email"
         tools:layout="@layout/fragment_confirm_email" >
         <action
