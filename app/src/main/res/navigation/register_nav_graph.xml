@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_nav_graph"
+    app:startDestination="@id/registerFragment">
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.kodorebi.kotlinstarter.ui.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_confirmEmailFragment"
+            app:destination="@id/confirmEmailFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmEmailFragment"
+        android:name="com.kodorebi.kotlinstarter.ui.ConfirmEmailFragment"
+        android:label="fragment_confirm_email"
+        tools:layout="@layout/fragment_confirm_email" >
+        <action
+            android:id="@+id/action_confirmEmailFragment_to_main_nav_graph"
+            app:destination="@id/main_nav_graph"
+            app:popUpTo="@+id/initial_nav_graph.xml"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <include app:graph="@navigation/main_nav_graph" />
+</navigation>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Test</title>
+        <style type="text/css">
+            body { font-family: sans-serif }
+
+            table { page-break-inside:auto; width: 100%; }
+            tr    { page-break-inside:avoid; page-break-after:auto }
+            thead { display:table-header-group }
+            tfoot { display:table-footer-group }
+
+            .destination { grid-area: a1; padding: 2pt;}
+            .start-date { grid-area: a2; padding: 2pt;}
+            .end-date { grid-area: a3; padding: 2pt;}
+
+            .comment-label { grid-area: a4; font-weight: bold; padding: 2pt;}
+            .comment { grid-area: a5; padding: 2pt;}
+
+            .item {
+                display: grid;
+                grid-template-areas:
+                'a1 a1 a1 a1 a1 a1'
+                'a2 a3 ax ax ax ax'
+                'a4 a4 a4 a4 a4 a4'
+                'a5 a5 a5 a5 a5 a5';
+            }
+
+            .separator { border-top: 1px solid gray; margin-top:4pt }
+        </style>
+
+
+        <script>
+            var data = { "trips" : [] }
+            /*
+            {
+                "trips" : [
+                    { "destination": "Test 1", "startDate": "01-01-2020", "endDate": "01-01-2020", "comment": "This is a test" },
+                    { "destination": "Test 2", "startDate": "01-01-2020", "endDate": "01-01-2020", "comment": "This is a test" },
+                    { "destination": "Test 3", "startDate": "01-01-2020", "endDate": "01-01-2020", "comment": null },
+                ]
+            }
+            */
+        </script>
+
+        <script>
+            function render() {
+                var template = document.getElementById('template').innerHTML;
+                var rendered = Mustache.render(template, data);
+                document.getElementById('tableBody').innerHTML = rendered;
+            }
+        </script>
+    </head>
+    <body>
+
+        <h1>Trips</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+            </tfoot>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>
+
+        <script id="template" type="x-tmpl-mustache">
+            {{#trips}}
+                <tr>
+                    <td>
+                    <div class="item">
+                        <div class="destination"><strong>Destination:</strong> {{destination}}</div>
+                        <div class="start-date"><strong>Start date:</strong> {{startDate}}</div>
+                        <div class="end-date"><strong>End date:</strong> {{endDate}}</div>
+                        {{#comment}}
+                        <div class="comment-label">Comment:</div>
+                        <div class="comment">{{.}}</div>
+                        {{/comment}}
+                    </div>
+                    <div class="separator"></div>
+                    </td>
+                </tr>
+            {{/trips}}
+        </script>
+
+        <script src="https://unpkg.com/mustache@latest"></script>
+        <script>
+            render()
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.kodorebi.kotlinstarter.ui.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_register_nav_graph"
+            app:destination="@id/register_nav_graph" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_sign_in_nav_graph"
+            app:destination="@id/sign_in_nav_graph" />
+    </fragment>
+    <include app:graph="@navigation/register_nav_graph" />
+    <include app:graph="@navigation/sign_in_nav_graph" />
+</navigation>

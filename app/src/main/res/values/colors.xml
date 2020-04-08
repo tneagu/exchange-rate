@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorTextHint">#AAAAAA</color>
+
+    <color name="colorItemSeparator">#3D3C3C</color>
+    <color name="colorEnabledImageButtonTint">#777777</color>
+    <color name="colorDisabledImageButtonTint">#AAAAAA</color>
+
+    <color name="colorAccountEnabled">#007700</color>
+    <color name="colorAccountDisabled">#770000</color>
+</resources>

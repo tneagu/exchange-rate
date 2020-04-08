@@ -1,0 +1,135 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4423237753333162839",
+      "lastPropertyId": "3:6468661153057547968",
+      "name": "DbRecord",
+      "properties": [
+        {
+          "id": "1:1281957437410295055",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6506324264737164288",
+          "name": "key",
+          "type": 9
+        },
+        {
+          "id": "3:6468661153057547968",
+          "name": "value",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:5241364536437382133",
+      "lastPropertyId": "8:692571270924505312",
+      "name": "DbTrip",
+      "properties": [
+        {
+          "id": "1:1607486244393692021",
+          "name": "id",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "2:4677721060649668490",
+          "name": "destination",
+          "type": 9
+        },
+        {
+          "id": "3:8942813551492040712",
+          "name": "startDate",
+          "type": 10
+        },
+        {
+          "id": "4:1412282434377006271",
+          "name": "endDate",
+          "type": 10
+        },
+        {
+          "id": "5:5663212962612710940",
+          "name": "comment",
+          "type": 9
+        },
+        {
+          "id": "7:5115566430618099711",
+          "name": "localId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "8:692571270924505312",
+          "name": "relUserId",
+          "indexId": "2:6997592873665135063",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "DbUser"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7495634758563887834",
+      "lastPropertyId": "6:751087957174327082",
+      "name": "DbUser",
+      "properties": [
+        {
+          "id": "1:3656678811443322192",
+          "name": "id",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "2:9202978515936699215",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:7404462106571219510",
+          "name": "roles",
+          "type": 9
+        },
+        {
+          "id": "4:287807569006891117",
+          "name": "localId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "5:319695192948443323",
+          "name": "accountEnabled",
+          "type": 1,
+          "flags": 4
+        },
+        {
+          "id": "6:751087957174327082",
+          "name": "email",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:7495634758563887834",
+  "lastIndexId": "2:6997592873665135063",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [
+    5564493393304723978
+  ],
+  "retiredPropertyUids": [
+    8169142272036564425
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}
