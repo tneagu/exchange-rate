@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.kodorebi.exchangerate.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

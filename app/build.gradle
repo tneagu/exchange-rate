@@ -35,6 +35,7 @@ android {
         jvmTarget = "1.8"
     }
 
+    dataBinding.enabled = true
 }
 
 dependencies {
@@ -70,13 +71,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
 
     implementation 'com.squareup.okhttp3:logging-interceptor:4.4.1'
-
-    //JWT
-    implementation 'com.auth0.android:jwtdecode:1.4.0'
-
-    //ThreeTen Android Backport
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.3'
-
-    implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
 }
