@@ -5,8 +5,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.kodorebi.exchangerate.R
 import com.kodorebi.exchangerate.core.ui.FragmentBase
 import com.kodorebi.exchangerate.ui.viewmodel.RateListViewModel
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_rate_list.*
 class RateListFragment : FragmentBase(R.layout.fragment_rate_list){
 
     private val ratesAdapter = RatesAdapter()
-    private lateinit var viewModel : RateListViewModel
+    val viewModel : RateListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,6 @@ class RateListFragment : FragmentBase(R.layout.fragment_rate_list){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(RateListViewModel::class.java)
         viewModel.refresh()
 
         ratesRecycler.apply {
