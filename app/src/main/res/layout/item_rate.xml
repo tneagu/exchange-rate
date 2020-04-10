@@ -7,7 +7,7 @@
     <data>
         <variable
             name="rate"
-            type="com.kodorebi.exchangerate.db.domain.models.Rate" />
+            type="com.kodorebi.exchangerate.models.Rate" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

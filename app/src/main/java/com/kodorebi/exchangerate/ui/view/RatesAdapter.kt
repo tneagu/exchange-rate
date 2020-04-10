@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kodorebi.exchangerate.R
 import com.kodorebi.exchangerate.databinding.ItemRateBinding
-import com.kodorebi.exchangerate.db.domain.models.Rate
+import com.kodorebi.exchangerate.models.Rate
 
 /**
  * Created by TNE17909 on 4/9/2020.

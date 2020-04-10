@@ -1,6 +1,8 @@
 package com.kodorebi.exchangerate.ws.services
 
-import com.kodorebi.exchangerate.db.domain.models.Rate
+import com.kodorebi.exchangerate.models.Rate
+import com.kodorebi.exchangerate.ws.models.WsRates
+import io.reactivex.Single
 import retrofit2.http.GET
 
 /**
@@ -10,6 +12,6 @@ import retrofit2.http.GET
 interface RateWebService {
 
     @GET("/latest")
-    suspend fun getLatestRates() : Rate
+    fun getLatestRates() : Single<WsRates>
 
 }

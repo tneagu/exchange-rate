@@ -7,7 +7,7 @@ object ConfigModuleBuilder {
     fun build(): Kodein.Module {
         return Kodein.Module("ConfigModule") {
             constant(tag="cfg.ws.baseUrl") with "https://api.exchangeratesapi.io/"
-            constant(tag="cfg.ws.dateFormat") with "yyyy-MM-dd'T'HH:mm:ss"
+            constant(tag="cfg.ws.dateFormat") with "yyyy-MM-dd"
 
             constant(tag="cfg.ui.dateFormat") with "dd-MM-yyyy"
         }

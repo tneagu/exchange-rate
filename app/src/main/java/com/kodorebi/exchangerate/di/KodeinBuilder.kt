@@ -10,7 +10,6 @@ object KodeinBuilder {
             import(ConfigModuleBuilder.build())
             import(RetrofitModuleBuilder.build(app))
             import(WebServicesModuleBuilder.build())
-            import(ObjectBoxModule.build(app))
             import(ErrorMessagesModule.build())
         }
     }

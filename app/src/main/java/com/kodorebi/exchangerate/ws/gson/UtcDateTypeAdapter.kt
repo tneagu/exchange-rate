@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class UtcDateTypeAdapter : JsonSerializer<Date>, JsonDeserializer<Date> {
-    private val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+    private val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
     init {
         dateFormat.timeZone = UTimeZone.utcTimeZone

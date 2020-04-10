@@ -13,6 +13,7 @@ import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.kodorebi.exchangerate.ws.gson.UtcDateTypeAdapter
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.util.*
 
 object RetrofitModuleBuilder {
@@ -53,6 +54,7 @@ object RetrofitModuleBuilder {
 
                 Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(instance()))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .baseUrl(baseUrl)
                     .client(instance())
                     .build()

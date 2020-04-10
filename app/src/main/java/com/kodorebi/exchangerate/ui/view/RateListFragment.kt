@@ -1,9 +1,15 @@
 package com.kodorebi.exchangerate.ui.view
 
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.kodorebi.exchangerate.R
 import com.kodorebi.exchangerate.core.ui.FragmentBase
+import com.kodorebi.exchangerate.ui.viewmodel.RateListViewModel
 import kotlinx.android.synthetic.main.fragment_rate_list.*
 
 /**
@@ -13,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_rate_list.*
 class RateListFragment : FragmentBase(R.layout.fragment_rate_list){
 
     private val ratesAdapter = RatesAdapter()
+    private lateinit var viewModel : RateListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +30,36 @@ class RateListFragment : FragmentBase(R.layout.fragment_rate_list){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(RateListViewModel::class.java)
+        viewModel.refresh()
+
         ratesRecycler.apply {
             adapter = ratesAdapter
         }
+
+        ovserveViewModel()
+    }
+
+    private fun ovserveViewModel() {
+        viewModel.rates.observe(viewLifecycleOwner,  Observer { rates ->
+            rates?.let{
+                ratesAdapter.setItems(rates)
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer { isError ->
+            isError?.let{
+                if(it){
+                    Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+        viewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
+            isLoading?.let{
+                loadingView.visibility = if(it) View.VISIBLE else View.GONE
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

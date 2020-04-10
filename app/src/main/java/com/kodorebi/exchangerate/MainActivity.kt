@@ -6,15 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.kodorebi.exchangerate.app.App
-import com.kodorebi.exchangerate.db.domain.Db
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.kodein.di.generic.instance
 
 class MainActivity : AppCompatActivity() {
-
-    private val db : Db by App.kodein.instance()
 
     private val navController: NavController by lazy {
         findNavController(R.id.navHost)
