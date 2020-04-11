@@ -85,4 +85,5 @@
     <string name="message_confirm_lose_user_changes">Discard user changes?</string>
     <string name="error_socket_timeout">"Connection timeout. "</string>
     <string name="error_cannot_connect_to_server">Can\'t connect to server.</string>
+    <string name="last_updated">Last updated %s</string>
 </resources>

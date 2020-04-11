@@ -7,38 +7,54 @@ import com.kodorebi.exchangerate.app.App
 import com.kodorebi.exchangerate.models.Rate
 import com.kodorebi.exchangerate.ws.models.WsRates
 import com.kodorebi.exchangerate.ws.services.RateWebService
-import io.objectbox.android.AndroidScheduler
+import io.reactivex.Flowable.interval
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import org.kodein.di.generic.instance
+import java.time.LocalDateTime
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by TNE17909 on 4/10/2020.
  * Copyright © 2019 OpenGroupe. All rights reserved.
  */
-class RateListViewModel(application: Application): AndroidViewModel(application) {
+class RateListViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val rateWebSerice : RateWebService by App.kodein.instance()
+    private val rateWebSerice: RateWebService by App.kodein.instance()
     private val disposable = CompositeDisposable()
 
     val rates = MutableLiveData<List<Rate>>()
+    val timestamp = MutableLiveData<LocalDateTime>()
     val error = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
 
-    fun refresh(){
+    fun refresh() {
         loading.value = true
         disposable.add(
-            rateWebSerice.getLatestRates()
-                .subscribeOn(Schedulers.newThread())
+            Observable.interval(3, TimeUnit.SECONDS)
+                .flatMap { rateWebSerice.getLatestRates("RON") }
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<WsRates>(){
-                    override fun onSuccess(response: WsRates) {
-                        val result : MutableList<Rate> = mutableListOf()
+                .subscribeWith(object : DisposableObserver<WsRates>() {
+                    override fun onError(e: Throwable) {
+                        error.value = true
+                        loading.value = false
+                        e.printStackTrace()
+                    }
+
+                    override fun onComplete() {
+                    }
+
+                    override fun onNext(response: WsRates) {
+                        val result: MutableList<Rate> = mutableListOf()
                         response.rates?.let {
-                            for(rate in it){
+                            for (rate in it) {
                                 val r = Rate(rate.key, rate.value)
                                 result.add(r)
                             }
@@ -47,16 +63,12 @@ class RateListViewModel(application: Application): AndroidViewModel(application)
                         rates.value = result
                         loading.value = false
                         error.value = false
-                    }
-
-                    override fun onError(e: Throwable) {
-                        error.value = true
-                        loading.value = false
-                        e.printStackTrace()
+                        timestamp.value = LocalDateTime.now();
                     }
                 })
         )
     }
+
 
     override fun onCleared() {
         super.onCleared()
