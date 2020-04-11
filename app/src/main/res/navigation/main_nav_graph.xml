@@ -10,6 +10,13 @@
         android:name="com.kodorebi.exchangerate.ui.view.RateListFragment"
         android:label="fragment_initial"
         tools:layout="@layout/fragment_rate_list" >
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.kodorebi.exchangerate.ui.view.SettingsFragment"
+        android:label="SettingsFragment" />
 
 </navigation>

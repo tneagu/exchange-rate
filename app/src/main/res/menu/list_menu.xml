@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Settings"
+        android:title="@string/history"
+        android:id="@+id/actionHistory"/>
+
+    <item
+        android:title="@string/settings"
         android:id="@+id/actionSettings"/>
+
 </menu>

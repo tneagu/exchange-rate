@@ -3,10 +3,12 @@ package com.kodorebi.exchangerate.ui.view
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kodorebi.exchangerate.R
@@ -33,9 +35,6 @@ class RateListFragment : FragmentBase(R.layout.fragment_rate_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.refresh()
-
         ratesRecycler.apply {
             adapter = ratesAdapter
             addItemDecoration(
@@ -45,9 +44,14 @@ class RateListFragment : FragmentBase(R.layout.fragment_rate_list) {
                 )
             )
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
         observeViewModel()
     }
+
 
     private fun observeViewModel() {
         viewModel.rates.observe(viewLifecycleOwner, Observer { rates ->
@@ -64,11 +68,6 @@ class RateListFragment : FragmentBase(R.layout.fragment_rate_list) {
             }
         })
 
-        viewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
-            isLoading?.let {
-                loadingView.visibility = if (it) View.VISIBLE else View.GONE
-            }
-        })
 
         viewModel.timestamp.observe(viewLifecycleOwner, Observer { timestamp ->
             timestamp?.let {
@@ -78,8 +77,24 @@ class RateListFragment : FragmentBase(R.layout.fragment_rate_list) {
         })
     }
 
+    //region Menu
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.list_menu, menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.actionSettings ->{
+                view?.let{
+                    navController.navigate(RateListFragmentDirections.toSettingsFragment())
+                }
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    //endregion
+
 }

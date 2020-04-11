@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.kodorebi.exchangerate.app.App
 import com.kodorebi.exchangerate.models.Rate
+import com.kodorebi.exchangerate.util.SharedPreferencesHelper
 import com.kodorebi.exchangerate.ws.models.WsRates
 import com.kodorebi.exchangerate.ws.services.RateWebService
 import io.reactivex.Flowable.interval
@@ -24,27 +25,26 @@ import java.util.concurrent.TimeUnit
  * Copyright © 2019 OpenGroupe. All rights reserved.
  */
 class RateListViewModel(application: Application) : AndroidViewModel(application) {
-
+    private var prefHelper = SharedPreferencesHelper(getApplication())
     private val rateWebSerice: RateWebService by App.kodein.instance()
     private val disposable = CompositeDisposable()
 
     val rates = MutableLiveData<List<Rate>>()
     val timestamp = MutableLiveData<LocalDateTime>()
     val error = MutableLiveData<Boolean>()
-    val loading = MutableLiveData<Boolean>()
 
 
     fun refresh() {
-        loading.value = true
+        val refreshTime = prefHelper.getRefreshTime();
+        disposable.clear()
         disposable.add(
-            Observable.interval(3, TimeUnit.SECONDS)
+            Observable.interval(0, refreshTime, TimeUnit.SECONDS)
                 .flatMap { rateWebSerice.getLatestRates("RON") }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<WsRates>() {
                     override fun onError(e: Throwable) {
                         error.value = true
-                        loading.value = false
                         e.printStackTrace()
                     }
 
@@ -61,7 +61,6 @@ class RateListViewModel(application: Application) : AndroidViewModel(application
 
                         }
                         rates.value = result
-                        loading.value = false
                         error.value = false
                         timestamp.value = LocalDateTime.now();
                     }

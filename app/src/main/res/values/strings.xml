@@ -86,4 +86,8 @@
     <string name="error_socket_timeout">"Connection timeout. "</string>
     <string name="error_cannot_connect_to_server">Can\'t connect to server.</string>
     <string name="last_updated">Last updated %s</string>
+    <string name="settings">Settings</string>
+    <string name="history">History</string>
+    <string name="refresh_interval">Refresh interval</string>
+    <string name="pref_key_refresh_interval">pref_refresh_interval_seconds</string>
 </resources>

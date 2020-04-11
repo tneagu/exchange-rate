@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:title="@string/refresh_interval"
+        android:key="@string/pref_key_refresh_interval"
+        android:entries="@array/refreshTimeListEntries"
+        android:entryValues="@array/refreshTimeListValues"
+        android:icon="@mipmap/ic_refresh"/>
+
+</androidx.preference.PreferenceScreen>
