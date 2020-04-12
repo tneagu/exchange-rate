@@ -7,7 +7,7 @@ import java.util.*
  * Copyright © 2019 OpenGroupe. All rights reserved.
  */
 class WsRates {
-    val rates: Map<String, Double>? = null
+    val rates: Map<String, Float>? = null
     val base: String = "EUR"
     val date: Date? = null
 }

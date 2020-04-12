@@ -6,5 +6,5 @@ package com.kodorebi.exchangerate.models
  */
 data class Rate (
     val currency: String = "",
-    val value: Double = 0.0
+    val value: Float = 0.0f
 )
