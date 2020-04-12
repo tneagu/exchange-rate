@@ -9,4 +9,9 @@
         android:entryValues="@array/refreshTimeListValues"
         android:icon="@mipmap/ic_refresh"/>
 
+    <ListPreference
+        android:title="@string/base_currency"
+        android:key="@string/pref_key_set_currency"
+        android:icon="@mipmap/ic_currency"/>
+
 </androidx.preference.PreferenceScreen>

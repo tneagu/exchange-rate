@@ -11,4 +11,7 @@
     <string name="refresh_interval">Refresh interval</string>
     <string name="pref_key_refresh_interval">pref_refresh_interval_seconds</string>
     <string name="rate_format">%.2f</string>
+    <string name="base_currency">Base currency</string>
+    <string name="pref_key_available_currency">pref_key_available_currency</string>
+    <string name="pref_key_set_currency">pref_key_set_currency</string>
 </resources>

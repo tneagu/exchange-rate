@@ -8,17 +8,15 @@ import com.kodorebi.exchangerate.models.Rate
 import com.kodorebi.exchangerate.util.SharedPreferencesHelper
 import com.kodorebi.exchangerate.ws.models.WsRates
 import com.kodorebi.exchangerate.ws.services.RateWebService
-import io.reactivex.Flowable.interval
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
-import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import org.kodein.di.generic.instance
 import java.time.LocalDateTime
-import java.util.*
 import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
 
 /**
  * Created by TNE17909 on 4/10/2020.
@@ -28,6 +26,7 @@ class RateListViewModel(application: Application) : AndroidViewModel(application
     private var prefHelper = SharedPreferencesHelper(getApplication())
     private val rateWebSerice: RateWebService by App.kodein.instance()
     private val disposable = CompositeDisposable()
+    private var currenciesUpdated : Boolean = false
 
     val rates = MutableLiveData<List<Rate>>()
     val timestamp = MutableLiveData<LocalDateTime>()
@@ -35,11 +34,12 @@ class RateListViewModel(application: Application) : AndroidViewModel(application
 
 
     fun refresh() {
-        val refreshTime = prefHelper.getRefreshTime();
+        val refreshTime = prefHelper.getRefreshTime()
+        val baseCurrency = prefHelper.getSavedCurrency()
         disposable.clear()
         disposable.add(
             Observable.interval(0, refreshTime, TimeUnit.SECONDS)
-                .flatMap { rateWebSerice.getLatestRates("RON") }
+                .flatMap { rateWebSerice.getLatestRates(baseCurrency) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<WsRates>() {
@@ -60,12 +60,24 @@ class RateListViewModel(application: Application) : AndroidViewModel(application
                             }
 
                         }
+                        if(!currenciesUpdated){
+                            updateCurrencies(result)
+                            currenciesUpdated = true
+                        }
                         rates.value = result
                         error.value = false
                         timestamp.value = LocalDateTime.now();
                     }
                 })
         )
+    }
+
+    private fun updateCurrencies(rates: MutableList<Rate>) {
+        val currencies = arrayListOf<String>()
+        rates.forEach(Consumer {
+            currencies.add(it.currency)
+        })
+        prefHelper.putAvailableCurrency(currencies)
     }
 
 
