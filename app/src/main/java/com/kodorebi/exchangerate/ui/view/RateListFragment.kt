@@ -90,6 +90,12 @@ class RateListFragment : FragmentBase(R.layout.fragment_rate_list) {
                     navController.navigate(RateListFragmentDirections.toSettingsFragment())
                 }
             }
+
+            R.id.actionHistory ->{
+                view?.let{
+                    navController.navigate(RateListFragmentDirections.toHistoryFragment())
+                }
+            }
         }
 
         return super.onOptionsItemSelected(item)

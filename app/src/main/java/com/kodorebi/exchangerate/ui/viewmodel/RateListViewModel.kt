@@ -53,9 +53,9 @@ class RateListViewModel(application: Application) : AndroidViewModel(application
 
                     override fun onNext(response: WsRates) {
                         val result: MutableList<Rate> = mutableListOf()
-                        response.rates?.let {
+                        response.rates.let {
                             for (rate in it) {
-                                val r = Rate(rate.key, rate.value)
+                                val r = Rate(rate.key, rate.value, response.date)
                                 result.add(r)
                             }
 

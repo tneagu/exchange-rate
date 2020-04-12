@@ -13,10 +13,17 @@
         <action
             android:id="@+id/toSettingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/toHistoryFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.kodorebi.exchangerate.ui.view.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.kodorebi.exchangerate.ui.view.HistoryFragment"
+        android:label="HistoryFragment" />
 
 </navigation>
